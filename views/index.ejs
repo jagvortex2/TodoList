@@ -1,0 +1,59 @@
+<%- include("partials/header.ejs")%>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<div class="MContainer">
+
+
+<!-- Write your code here -->
+<% if(locals.numLetters){ %>
+    <h1 class="text-center" style="color: #ECF2FF;">Your name <%= numLetters%></h1>
+<% } else{ %>
+    <h1>Write Your Name Below 🗡</h1>
+<% } %>
+
+    <div class="box text-bg-dark shadow-lg p-2 rounded">
+        <div class ="clock" style="height: 40px;">
+            <h1 class="fs-4 text-center p-2"> <%=  new Date().toDateString() %>  </h1>
+
+        </div>
+    </div>
+
+<div class="box boxM text-center shadow-lg p-2 rounded ">
+
+        <% if(locals.numLetters) {%>
+
+        <!--<h1><%= numLetters %> </h1>-->
+        <% if (listItems.length > 0){%>
+           <% for (let value of listItems) { %>
+            <div class ="item text-center row justify-content-between">
+                <input class="ms-3 me-1  form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <p class="col itemText mt-3 fs-4 font-monospace w-light text-success"> <%= value %> </p>
+
+                <button type="button" class=" btn-close me-3" aria-label="Close"></button>
+               
+                <div class="text-success">
+
+                </div>
+            </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-end">
+        </div>
+        <% } %>
+        <% } %>
+        <% } %>
+
+
+            <div class="d-grid gap-2 d-md-flex justify-content-end">
+
+
+
+<form action="/submit" method="POST">
+    <input type="text" name="fName" placeholder="New Item">
+    <input type="submit" value="Add" class="btn btn-outline-success me-1 mt-1 mb-1 float-end">
+</form>
+            </div>
+</div>
+</div>
+<%- include("partials/footer.ejs")%>
